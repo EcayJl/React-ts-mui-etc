@@ -1,58 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MeasuringUI from "./components/measuringUI/Measuring";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { darkTheme as mainTheme } from "./theme-option/darkTheme";
+import HomePage from "./pages/Home";
+import Layout from "./Layout/Layout";
+import TypeScriptPage from "./pages/TypeScript/TypeScriptPage";
+import Box from "@mui/material/Box";
 
-function App() {
+const ReactAppMainContainer: React.FunctionComponent = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <ThemeProvider theme={mainTheme}>
+      <CssBaseline />
+      <Router>
+        <Layout>
+          <Box className="app-react-component" mt={10}>
+            <Routes>
+              <Route
+                path="/components-testing"
+                caseSensitive={false}
+                element={<MeasuringUI />}
+              />
+              <Route path="/" caseSensitive={false} element={<HomePage />} />
+              <Route path="/ts" caseSensitive={false} element={<TypeScriptPage/>} />
+            </Routes>
+          </Box>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
-export default App;
+export default ReactAppMainContainer;
