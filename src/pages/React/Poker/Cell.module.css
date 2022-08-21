@@ -1,8 +1,75 @@
 .b1{
     background-image: url(../../../../static/cards/1b.jpg);
 }
+
 .b2{
     background-image: url(../../../../static/cards/2b.jpg);
+}
+
+.b3{
+    background-image: url(../../../../static/cards/3b.jpg);
+}
+
+.b4{
+    background-image: url(../../../../static/cards/4b.jpg);
+}
+
+.b5{
+    background-image: url(../../../../static/cards/5b.jpg);
+}
+
+.b6{
+    background-image: url(../../../../static/cards/6b.jpg);
+}
+
+.b7{
+    background-image: url(../../../../static/cards/7b.jpg);
+}
+
+.b8{
+    background-image: url(../../../../static/cards/8b.jpg);
+}
+
+.b9{
+    background-image: url(../../../../static/cards/9b.jpg);
+}
+
+.b10{
+    background-image: url(../../../../static/cards/10b.jpg);
+}
+
+
+.b11{
+    background-image: url(../../../../static/cards/11b.jpg);
+}
+
+.b12{
+    background-image: url(../../../../static/cards/12b.jpg);
+}
+
+
+.b13{
+    background-image: url(../../../../static/cards/13b.jpg);
+}
+.cellRow{
+    display: flex;
+    justify-content: center;
+    margin: 0 -5px;
+}
+.pokerUi{
+    margin-top: 50px;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+}
+.pokerUi::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.3);
+    filter: blur(5px);
+    position: absolute;
 }
 .ccard{
     width: 200px;
