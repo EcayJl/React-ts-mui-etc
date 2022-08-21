@@ -13,7 +13,7 @@ const stylesArray: Array<string> = [
     styles.b11,
     styles.b12,
     styles.b13,
-
+    styles.zero
 ];
 
 export default stylesArray;

@@ -11,7 +11,7 @@ const Cell: React.ElementType = (props: Record<string, string | number>) => {
         className={cardMap.get(props.cardName.toString())}
         style={{
           width: "200px",
-          height: "250px",
+          height: "300px",
           backgroundSize: "cover",
           flex: "1 1 auto",
           margin: "0 5px",

@@ -14,6 +14,7 @@ const cardMap = new Map([
     ['b11', stylesArray[10]],
     ['b12', stylesArray[11]],
     ['b13', stylesArray[12]],
+    ['zero', stylesArray[stylesArray.length - 1]],
 
 
 

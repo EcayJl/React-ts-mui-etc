@@ -26,6 +26,10 @@
     background-image: url(../../../../static/cards/7b.jpg);
 }
 
+.zero{
+    background-image: url(../../../../static/cards/zero.png);
+}
+
 .b8{
     background-image: url(../../../../static/cards/8b.jpg);
 }
@@ -55,6 +59,7 @@
     display: flex;
     justify-content: center;
     margin: 0 -5px;
+    transition: 1s;
 }
 .pokerUi{
     margin-top: 50px;
@@ -62,6 +67,7 @@
     height: 100px;
     position: relative;
     display: flex;
+    transition: 1s;
 }
 .pokerUi::before{
     content: "";
@@ -75,4 +81,5 @@
     width: 200px;
     height: 250px;
     background-size: cover;
+    transition: 1s;
 }
