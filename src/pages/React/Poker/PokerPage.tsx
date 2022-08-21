@@ -4,12 +4,33 @@ import Cell from "./Cell";
 import Button from "@mui/material/Button";
 import styles from "./Cell.module.css";
 
+type TGameStatus = 'downtime' | 'flop' | 'turn' | 'river';
+
 const PokerPage: React.FC = () => {
   const [bet, setBet] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<TGameStatus>('downtime');
   const [cardsPool, setCardsPool] = useState<Array<string>>(['zero','zero','zero','zero','zero']);
 
+  const setCurrentStepDecorator = (stepName: TGameStatus): void => {
+    setCurrentStep(stepName)
+  }
+
+  useEffect(() => {
+    setCardsPoolDecorator()
+  }, [currentStep])
+
   const setCardsPoolDecorator = (): void => {
-    setCardsPool(['b2', 'b2', 'b2', 'zero', 'zero']);
+    switch (currentStep) {
+        case 'flop':
+            setCardsPool(['b2', 'b2', 'b2', 'zero', 'zero']);
+        break;
+        case 'turn':
+            setCardsPool(['b2', 'b2', 'b2', 'b1', 'zero']);
+        break;
+        case 'river':
+            setCardsPool(['b2', 'b2', 'b2', 'b2', 'b2']);
+        break;
+    }
   }
 
   const cellElements = cardsPool.map((cardName) => (
@@ -34,9 +55,9 @@ const PokerPage: React.FC = () => {
             Bet: {bet} ₽
           </Typography>
           <Button variant="text">Set Bet</Button>
-          <Button variant="text" onClick={() => {setCardsPoolDecorator()}}>Start Flop</Button>
-          <Button variant="text">Turn step</Button>
-          <Button variant="text">River step</Button>
+          <Button variant="text" onClick={() => {setCurrentStepDecorator('flop')}}>Start Flop</Button>
+          <Button variant="text" onClick={() => {setCurrentStepDecorator('turn')}}>Turn step</Button>
+          <Button variant="text" onClick={() => {setCurrentStepDecorator('river')}}>River step</Button>
         </div>
       </div>
     </>
