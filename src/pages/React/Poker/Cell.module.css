@@ -83,3 +83,21 @@
     background-size: cover;
     transition: 1s;
 }
+
+.animated {
+    animation: move 2.5s infinite linear;
+}
+
+@keyframes move {
+    0% {
+      transform:  scale(1);
+      background-color: none;
+    }
+    50% {
+      transform: scale(1.2);
+      background-color: rgba(83, 236, 142, 0.315);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

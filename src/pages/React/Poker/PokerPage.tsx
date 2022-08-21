@@ -33,6 +33,17 @@ const PokerPage: React.FC = () => {
     }
   }
 
+  const DinamicBtn = () => {
+    if(currentStep === 'flop') {
+      return  <Button variant="text" onClick={() => {setCurrentStepDecorator('turn')}}>Turn step</Button>
+      }else if (currentStep === 'turn') {
+        return <Button variant="text" onClick={() => {setCurrentStepDecorator('river')}}>River step</Button>
+      }
+      else {
+        return <Button variant="text" onClick={() => {setCurrentStepDecorator('flop')}}>Start game Flop step</Button>
+      }
+  }
+
   const cellElements = cardsPool.map((cardName) => (
     <Cell
       cardName={cardName}
@@ -45,6 +56,10 @@ const PokerPage: React.FC = () => {
         <Typography variant="h2" sx={{ p: 1.5 }}>
           Minimal bet 100 ₽💰
         </Typography>
+        <Typography sx={{p: 1.5}}>
+            You can increase the BET at each step.
+        </Typography>
+          
 
         <div className={styles.cellRow}>{cellElements}</div>
         <div className={styles.pokerUi}>
@@ -54,10 +69,8 @@ const PokerPage: React.FC = () => {
           <Typography variant="h2" sx={{ p: 1.5 }}>
             Bet: {bet} ₽
           </Typography>
-          <Button variant="text">Set Bet</Button>
-          <Button variant="text" onClick={() => {setCurrentStepDecorator('flop')}}>Start Flop</Button>
-          <Button variant="text" onClick={() => {setCurrentStepDecorator('turn')}}>Turn step</Button>
-          <Button variant="text" onClick={() => {setCurrentStepDecorator('river')}}>River step</Button>
+          <Button variant="text" className={styles.animated} sx={{mr: 1}}>Set Bet </Button>
+          <DinamicBtn />
         </div>
       </div>
     </>
