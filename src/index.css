@@ -23,6 +23,10 @@ li:hover{
   cursor: pointer;
   transition: .5s;
 }
+img{
+  width: 200px;
+  height: 250px;
+}
 a {
   text-decoration:none;
   color: white;

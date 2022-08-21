@@ -19,7 +19,8 @@ const MainMenuComponent: React.FunctionComponent = () => {
         <ul>
           <li><Link to={routes.home}>Home</Link></li>
           <li><Link to={routes.ts}>TypeScript</Link></li>
-          <li>React RTK&etc</li>
+          <li><Link to={routes.react}>React RTK&etc</Link></li>
+
         </ul>
       </Box>
       <Typography variant="h5" mt={6} mb={1}><a href="https://github.com/EcayJl?tab=repositories" target="_blanc">let`s go to my repo</a></Typography>

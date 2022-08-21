@@ -1,0 +1,11 @@
+.b1{
+    background-image: url(../../../../static/cards/1b.jpg);
+}
+.b2{
+    background-image: url(../../../../static/cards/2b.jpg);
+}
+.ccard{
+    width: 200px;
+    height: 250px;
+    background-size: cover;
+}

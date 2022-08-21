@@ -8,6 +8,8 @@ import HomePage from "./pages/Home";
 import Layout from "./Layout/Layout";
 import TypeScriptPage from "./pages/TypeScript/TypeScriptPage";
 import Box from "@mui/material/Box";
+import ReactPage from "./pages/React/ReactPage";
+import PokerPage from "./pages/React/Poker/PokerPage";
 
 const ReactAppMainContainer: React.FunctionComponent = () => {
   return (
@@ -24,6 +26,8 @@ const ReactAppMainContainer: React.FunctionComponent = () => {
               />
               <Route path="/" caseSensitive={false} element={<HomePage />} />
               <Route path="/ts" caseSensitive={false} element={<TypeScriptPage/>} />
+              <Route path="/react" caseSensitive={false} element={<ReactPage/>} />
+              <Route path="/poker" caseSensitive={false} element={<PokerPage/>} />
             </Routes>
           </Box>
         </Layout>
