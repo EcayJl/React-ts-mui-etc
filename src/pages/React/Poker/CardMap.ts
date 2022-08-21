@@ -14,6 +14,20 @@ const cardMap = new Map([
     ['b11', stylesArray[10]],
     ['b12', stylesArray[11]],
     ['b13', stylesArray[12]],
+    ['h1', stylesArray[13]],
+    ['h2', stylesArray[14]],
+    ['h3', stylesArray[15]],
+    ['h4', stylesArray[16]],
+    ['h5', stylesArray[17]],
+    ['h6', stylesArray[18]],
+    ['h7', stylesArray[19]],
+    ['h8', stylesArray[20]],
+    ['h9', stylesArray[21]],
+    ['h10', stylesArray[22]],
+    ['h11', stylesArray[23]],
+    ['h12', stylesArray[24]],
+    ['h13', stylesArray[25]],
+    
     ['zero', stylesArray[stylesArray.length - 1]],
 
 

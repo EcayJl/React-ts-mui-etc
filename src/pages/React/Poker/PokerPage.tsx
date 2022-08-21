@@ -10,19 +10,22 @@ import Button from "@mui/material/Button";
 import styles from "./Cell.module.css";
 import DefaultModal from "../../../components/common/Modal";
 import { Context } from "./context";
+import CardEngine from "./CardEngine"
 
 type TGameStatus = "downtime" | "flop" | "turn" | "river";
+
+CardEngine.getRandomCards();
 
 const PokerPage: React.FC = () => {
   const [bet, setBet] = useState<number>(0);
   const [poket, setPoket] = useState<number>(500);
   const [modalStatus, setModalStatus] = useState<boolean>(false);
   const [isAlert, setAlert] = useState<string>("none");
-  useEffect(()=>{
-    setTimeout(()=>{
-        setAlert('none')
-    }, 2300)
-  },[isAlert])
+  useEffect(() => {
+    setTimeout(() => {
+      setAlert("none");
+    }, 2300);
+  }, [isAlert]);
 
   const [currentStep, setCurrentStep] = useState<TGameStatus>("downtime");
   const [cardsPool, setCardsPool] = useState<Array<string>>([
@@ -46,13 +49,13 @@ const PokerPage: React.FC = () => {
   const setCardsPoolDecorator = (): void => {
     switch (currentStep) {
       case "flop":
-        setCardsPool(["b2", "b2", "b2", "zero", "zero"]);
+        setCardsPool(["b1", "h6", "b8", "zero", "zero"]);
         break;
       case "turn":
-        setCardsPool(["b2", "b2", "b2", "b1", "zero"]);
+        setCardsPool(["b1", "h6", "b8", "b1", "zero"]);
         break;
       case "river":
-        setCardsPool(["b2", "b2", "b2", "b2", "b2"]);
+        setCardsPool(["b1", "h6", "b8", "b1", "h4"]);
         break;
     }
   };
@@ -145,10 +148,10 @@ const PokerPage: React.FC = () => {
         <div>Enter your bet.</div>
         <TextField
           onChange={(e) => {
-            if(e.target.value === ''){
-                setBet(0)
+            if (e.target.value === "") {
+              setBet(0);
             }
-            Math.sign(+e.target.value) && e.target.value !== ''
+            Math.sign(+e.target.value) && e.target.value !== ""
               ? setBet(+e.target.value)
               : setAlert("block");
           }}
@@ -157,7 +160,7 @@ const PokerPage: React.FC = () => {
           variant="standard"
         />
         <Alert sx={{ mt: 2, display: `${isAlert}` }} severity="error">
-            Enter the available balance.
+          Enter the available balance.
         </Alert>
       </DefaultModal>
     </Context.Provider>
