@@ -1,8 +1,27 @@
 import cardMap from "./CardMap";
 
 type TCardStackSize = [string, string, string, string, string];
+interface IRenderArray {
+  mainArr: Array<TCardStackSize | string[]>;
+  flopArr: Array<TCardStackSize | string[]>;
+  turnArr: Array<TCardStackSize | string[]>;
+}
 export default class CardEngine {
-  static getNCards(n: number = 5): Array<TCardStackSize> {
+  static getBundleRenderArray(): IRenderArray {
+    const mainArr = this.getNCards();
+    let flopArr = mainArr.slice(0, 3);
+    let turnArr = mainArr.slice(0, 4);
+
+    flopArr = flopArr.concat(["zero", "zero"]);
+    turnArr = turnArr.concat(["zero"]);
+    return {
+      mainArr,
+      flopArr,
+      turnArr,
+    };
+  }
+
+  static getNCards(n: number = 5): Array<TCardStackSize | string[]> {
     const arr: string[] = [];
 
     for (let i = 0; i < n; i++) {

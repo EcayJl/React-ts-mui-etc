@@ -14,7 +14,7 @@ import CardEngine from "./CardEngine"
 
 type TGameStatus = "downtime" | "flop" | "turn" | "river";
 
-console.log(CardEngine.getNCards());
+console.log(CardEngine.getBundleRenderArray());
 
 const PokerPage: React.FC = () => {
   const [bet, setBet] = useState<number>(0);
