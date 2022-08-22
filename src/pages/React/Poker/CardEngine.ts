@@ -2,9 +2,9 @@ import cardMap from "./CardMap";
 
 export type TCardStackSize = [string, string, string, string, string];
 interface IRenderArray {
-  mainArr: Array<TCardStackSize | string[]>;
-  flopArr: Array<TCardStackSize | string[]>;
-  turnArr: Array<TCardStackSize | string[]>;
+  mainArr: Array<string>;
+  flopArr: Array<string>;
+  turnArr: Array<string>;
 }
 export default class CardEngine {
   static getBundleRenderArray(): IRenderArray {
@@ -24,7 +24,7 @@ export default class CardEngine {
     };
   }
 
-  static getNCards(n: number = 5): Array<TCardStackSize | string[]> {
+  static getNCards(n: number = 5): Array<string> {
     const arr: string[] = [];
 
     for (let i = 0; i < n; i++) {
@@ -39,7 +39,7 @@ export default class CardEngine {
       arr.push(currLink);
     }
 
-    let result: Array<TCardStackSize> = [];
+    let result: Array<string> = [];
     Object.assign(result, arr);
 
     return result;

@@ -16,10 +16,10 @@ import PokerEngine from "./GameEngine";
 
 type TGameStatus = "downtime" | "flop" | "turn" | "river";
 
-
-
 const PokerPage: React.FC = () => {
-  const [cardStack, setCardStack] = useState(CardEngine.getBundleRenderArray())
+  const [cardStack, setCardStack] = useState(CardEngine.getBundleRenderArray());
+  console.log(PokerEngine.chekDeckCombo(cardStack.mainArr));
+
   const [bet, setBet] = useState<number>(0);
   const [poket, setPoket] = useState<number>(500);
   const [modalStatus, setModalStatus] = useState<boolean>(false);
