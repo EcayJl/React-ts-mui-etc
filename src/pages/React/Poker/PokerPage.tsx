@@ -10,13 +10,15 @@ import Button from "@mui/material/Button";
 import styles from "./Cell.module.css";
 import DefaultModal from "../../../components/common/Modal";
 import { Context } from "./context";
-import CardEngine from "./CardEngine"
+import CardEngine from "./CardEngine";
+import TCardStackSize from "./CardEngine";
 
 type TGameStatus = "downtime" | "flop" | "turn" | "river";
 
 console.log(CardEngine.getBundleRenderArray());
 
 const PokerPage: React.FC = () => {
+  const [cardStack, setCardStack] = useState(CardEngine.getBundleRenderArray())
   const [bet, setBet] = useState<number>(0);
   const [poket, setPoket] = useState<number>(500);
   const [modalStatus, setModalStatus] = useState<boolean>(false);
@@ -28,7 +30,7 @@ const PokerPage: React.FC = () => {
   }, [isAlert]);
 
   const [currentStep, setCurrentStep] = useState<TGameStatus>("downtime");
-  const [cardsPool, setCardsPool] = useState<Array<string>>([
+  const [cardsPool, setCardsPool] = useState<Array<TCardStackSize | string>>([
     "zero",
     "zero",
     "zero",
@@ -49,13 +51,13 @@ const PokerPage: React.FC = () => {
   const setCardsPoolDecorator = (): void => {
     switch (currentStep) {
       case "flop":
-        setCardsPool(["b1", "h6", "b8", "zero", "zero"]);
+        setCardsPool(cardStack.flopArr);
         break;
       case "turn":
-        setCardsPool(["b1", "h6", "b8", "b1", "zero"]);
+        setCardsPool(cardStack.turnArr);
         break;
       case "river":
-        setCardsPool(["b1", "h6", "b8", "b1", "h4"]);
+        setCardsPool(cardStack.mainArr);
         break;
     }
   };

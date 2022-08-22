@@ -94,6 +94,85 @@
 .h13{
     background-image: url(../../../../static/cards/13h.jpg);
 }
+.k1{
+    background-image: url(../../../../static/cards/1k.jpg);
+}
+.k2{
+    background-image: url(../../../../static/cards/2k.jpg);
+}
+.k3{
+    background-image: url(../../../../static/cards/3k.jpg);
+}
+.k4{
+    background-image: url(../../../../static/cards/4k.jpg);
+}
+.k5{
+    background-image: url(../../../../static/cards/5k.jpg);
+}
+.k6{
+    background-image: url(../../../../static/cards/6k.jpg);
+}
+.k7{
+    background-image: url(../../../../static/cards/7k.jpg);
+}
+.k8{
+    background-image: url(../../../../static/cards/8k.jpg);
+}
+.k9{
+    background-image: url(../../../../static/cards/9k.jpg);
+}
+.k10{
+    background-image: url(../../../../static/cards/10k.jpg);
+}
+.k11{
+    background-image: url(../../../../static/cards/11k.jpg);
+}
+.k12{
+    background-image: url(../../../../static/cards/12k.jpg);
+}
+.k13{
+    background-image: url(../../../../static/cards/13k.jpg);
+}
+
+.t1{
+    background-image: url(../../../../static/cards/1t.jpg);
+}
+.t2{
+    background-image: url(../../../../static/cards/2t.jpg);
+}
+.t3{
+    background-image: url(../../../../static/cards/3t.jpg);
+}
+.t4{
+    background-image: url(../../../../static/cards/4t.jpg);
+}
+.t5{
+    background-image: url(../../../../static/cards/5t.jpg);
+}
+.t6{
+    background-image: url(../../../../static/cards/6t.jpg);
+}
+.t7{
+    background-image: url(../../../../static/cards/7t.jpg);
+}
+.t8{
+    background-image: url(../../../../static/cards/8t.jpg);
+}
+.t9{
+    background-image: url(../../../../static/cards/9t.jpg);
+}
+.t10{
+    background-image: url(../../../../static/cards/10t.jpg);
+}
+.t11{
+    background-image: url(../../../../static/cards/11t.jpg);
+}
+.t12{
+    background-image: url(../../../../static/cards/12t.jpg);
+}
+.t13{
+    background-image: url(../../../../static/cards/13t.jpg);
+}
 .cellRow{
     display: flex;
     justify-content: center;

@@ -1,6 +1,6 @@
 import cardMap from "./CardMap";
 
-type TCardStackSize = [string, string, string, string, string];
+export type TCardStackSize = [string, string, string, string, string];
 interface IRenderArray {
   mainArr: Array<TCardStackSize | string[]>;
   flopArr: Array<TCardStackSize | string[]>;
