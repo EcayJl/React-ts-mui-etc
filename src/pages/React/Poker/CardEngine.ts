@@ -9,6 +9,9 @@ interface IRenderArray {
 export default class CardEngine {
   static getBundleRenderArray(): IRenderArray {
     const mainArr = this.getNCards();
+
+    console.log(mainArr, "lo");
+
     let flopArr = mainArr.slice(0, 3);
     let turnArr = mainArr.slice(0, 4);
 
@@ -32,8 +35,10 @@ export default class CardEngine {
           currLink = this.getRandomStyleLink();
         }
       }
-      arr.push(this.getRandomStyleLink());
+
+      arr.push(currLink);
     }
+
     let result: Array<TCardStackSize> = [];
     Object.assign(result, arr);
 
