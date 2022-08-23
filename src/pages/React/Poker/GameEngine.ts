@@ -98,13 +98,20 @@ export default class PokerEngine {
     }
   }
 
-  static isStraight (deck: string[]) {
+  static isStraight(deck: string[]) {
     const cutDeck = this.cutCardNumber(deck);
-    const sortDeck: number[] = cutDeck.sort(function(a, b) {
-      return a - b;
-    });
-    console.log(sortDeck);
-    
+    const withoutAce = this.getIncludesObj(cutDeck);
+
+    if (withoutAce[1] > 1) {
+      return false;
+    } else {
+      cutDeck.splice(cutDeck.indexOf(1), 1);
+      const sortDeck: number[] = cutDeck.sort(function (a, b) {
+        return a - b;
+      });
+
+      console.log(sortDeck, "9879");
+    }
   }
 
   static isFlush(deck: Array<string>) {
