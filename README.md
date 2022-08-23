@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# ПЛАНЫ НА БЛИЖАЙШЕЕ ВРЕМЯ
+покрытие покерной логики тестами, и покрытие класса генерации карт.
+внедрение распознавания новых комбинаций.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## СТАДИЯ РАЗРАБОТКИ 0.0.15
+на данный момент проэкт сырой. алгоритмы еще не проверены до конца, архитектурные решения не идеальны.
 
 ## Available Scripts
 
