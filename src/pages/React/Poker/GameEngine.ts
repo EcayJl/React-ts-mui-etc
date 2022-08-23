@@ -6,6 +6,8 @@ const enum Suits {
 }
 //на вынос из файла. в будущем планирую сделать работу с мастями иначе.
 const SuitsArr: string[] = ["k", "b", "h", "t"];
+
+// todo переписать все это в функционалочке
 export default class PokerEngine {
   static staticCases = {
     metaRoyalCase: [1, 13, 12, 11, 10],
@@ -25,51 +27,44 @@ export default class PokerEngine {
       return +i.substring(1);
     });
   }
+  static getTrainCombinations(deck: string[]) {
+    const arr: number[] = this.cutCardNumber(deck);
+    const result = this.getIncludesObj(arr);
+    const objValues: number[] = Object.values(result);
 
-  static isCare(arr: string[]): boolean {
-    const result = this.getIncludesObj(this.cutCardNumber(arr));
-    if (result[1] === 4) {
-      return true;
-    } else {
-      return false;
-    }
+    return objValues;
+  }
+
+  static isPair(deck: string[]): boolean {
+    const objValues = this.getTrainCombinations(deck);
+    const isDouble = objValues.includes(2);
+
+    return isDouble ? true : false;
+  }
+
+  static isSet(deck: string[]) {
+    const objValues = this.getTrainCombinations(deck);
+    const isSet = objValues.includes(3);
+
+    return isSet ? true : false;
+  }
+
+  static isTwoPair(deck: string[]): boolean {
+    const objValues = this.getTrainCombinations(deck);
+    const result = this.getIncludesObj(objValues);
+
+    return result[2] === 2 ? true : false;
+  }
+
+  static isFullHouse(deck: string[]) {
+    return this.isSet(deck) && this.isTwoPair(deck) ? true : false;
   }
 
   static seniorCardCase(arr: string[]) {
     return {};
   }
 
-  //   обьеденил типовые действия в один слой. не очень хорошее решение, помечаю под измеение.
-  //  монструозная функция
-  static chekDeckCombo(deck: string[]) {
-    const arr: number[] = this.cutCardNumber(deck);
-
-    const result = this.getIncludesObj(arr);
-
-    const objValues: number[] = Object.values(result);
-    const isDouble = objValues.includes(2);
-    const isTriple = objValues.includes(3);
-    const isHouse = objValues.includes(2) && objValues.includes(3);
-
-    if (isDouble) {
-      const result = this.getIncludesObj(objValues);
-      if (result[2] === 2) {
-        return "isDoublePair";
-      }
-
-      return "isDouble";
-    }
-
-    if (isTriple) {
-      return "isTriple";
-    }
-
-    if (isHouse) {
-      return "isHouse";
-    }
-  }
-
-  static isRoyalSet(deck: string[]) {
+  static isRoyalSet(deck: string[]): boolean {
     const arr: number[] = this.cutCardNumber(deck);
     const metaArr: number[] = [1, 13, 12, 11, 10];
 
@@ -86,10 +81,30 @@ export default class PokerEngine {
     return isAllTrue.every((el) => el === true);
   }
 
-  static isRoyalFlush(deck: string[]) {
+  static isCare(arr: string[]): boolean {
+    const result = this.getIncludesObj(this.cutCardNumber(arr));
+    if (result[1] === 4) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static isRoyalFlush(deck: string[]): boolean {
     if (this.isFlush(deck)) {
       return this.isRoyalSet(deck);
+    } else {
+      return false;
     }
+  }
+
+  static isStraight (deck: string[]) {
+    const cutDeck = this.cutCardNumber(deck);
+    const sortDeck: number[] = cutDeck.sort(function(a, b) {
+      return a - b;
+    });
+    console.log(sortDeck);
+    
   }
 
   static isFlush(deck: Array<string>) {
