@@ -1,13 +1,16 @@
-import { TCardStackSize } from "./CardEngine";
-
 const enum Suits {
-  C0LUBS = "k",
+  CLUBS = "k",
   DIAMONDS = "b",
   HEARTS = "h",
   SPADES = "t",
 }
+//на вынос из файла. в будущем планирую сделать работу с мастями иначе.
 const SuitsArr: string[] = ["k", "b", "h", "t"];
 export default class PokerEngine {
+  static staticCases = {
+    metaRoyalCase: [1, 13, 12, 11, 10],
+  };
+
   static getIncludesObj(arr: number[]) {
     const result = arr.reduce(function (acc: any, el: number) {
       acc[el] = (acc[el] || 0) + 1;
@@ -23,6 +26,19 @@ export default class PokerEngine {
     });
   }
 
+  static isCare(arr: string[]): boolean {
+    const result = this.getIncludesObj(this.cutCardNumber(arr));
+    if (result[1] === 4) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static seniorCardCase(arr: string[]) {
+    return {};
+  }
+
   //   обьеденил типовые действия в один слой. не очень хорошее решение, помечаю под измеение.
   //  монструозная функция
   static chekDeckCombo(deck: string[]) {
@@ -33,7 +49,7 @@ export default class PokerEngine {
     const objValues: number[] = Object.values(result);
     const isDouble = objValues.includes(2);
     const isTriple = objValues.includes(3);
-    const isHouse = objValues.includes(2, 3);
+    const isHouse = objValues.includes(2) && objValues.includes(3);
 
     if (isDouble) {
       const result = this.getIncludesObj(objValues);
@@ -53,7 +69,7 @@ export default class PokerEngine {
     }
   }
 
-  static isRoyalFlush(deck: string[]) {
+  static isRoyalSet(deck: string[]) {
     const arr: number[] = this.cutCardNumber(deck);
     const metaArr: number[] = [1, 13, 12, 11, 10];
 
@@ -70,17 +86,27 @@ export default class PokerEngine {
     return isAllTrue.every((el) => el === true);
   }
 
-  static isFlush(deck: Array<string>): boolean {
-    let isFlush = false;
+  static isRoyalFlush(deck: string[]) {
+    if (this.isFlush(deck)) {
+      return this.isRoyalSet(deck);
+    }
+  }
 
-    deck.every((value) => {
-      for (let i = 0; i < 4; i++) {
-        if (value.includes(SuitsArr[i])) {
-          isFlush = true;
-        }
-      }
-    });
+  static isFlush(deck: Array<string>) {
+    let isFlush: boolean[] = [];
 
-    return isFlush;
+    for (let i = 0; i < 5; i++) {
+      isFlush.push(
+        deck.every((value) => {
+          value.includes(SuitsArr[i]);
+        })
+      );
+    }
+
+    if (isFlush.some((el) => el === true)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

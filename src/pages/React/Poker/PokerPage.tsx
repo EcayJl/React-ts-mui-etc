@@ -18,7 +18,7 @@ type TGameStatus = "downtime" | "flop" | "turn" | "river";
 
 const PokerPage: React.FC = () => {
   const [cardStack, setCardStack] = useState(CardEngine.getBundleRenderArray());
-  console.log(PokerEngine.isRoyalFlush(cardStack.mainArr), 'isRoyal');
+  console.log(PokerEngine.isFlush(cardStack.mainArr), 'flush');
 
   const [bet, setBet] = useState<number>(0);
   const [poket, setPoket] = useState<number>(500);
