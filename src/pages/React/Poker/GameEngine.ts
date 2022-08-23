@@ -17,12 +17,16 @@ export default class PokerEngine {
     return result;
   }
 
+  static cutCardNumber(arr: string[]): number[] {
+    return arr.map((i) => {
+      return +i.substring(1);
+    });
+  }
+
   //   обьеденил типовые действия в один слой. не очень хорошее решение, помечаю под измеение.
   //  монструозная функция
   static chekDeckCombo(deck: string[]) {
-    const arr: number[] = deck.map((i) => {
-      return +i.substring(1);
-    });
+    const arr: number[] = this.cutCardNumber(deck);
 
     const result = this.getIncludesObj(arr);
 
@@ -47,6 +51,23 @@ export default class PokerEngine {
     if (isHouse) {
       return "isHouse";
     }
+  }
+
+  static isRoyalFlush(deck: string[]) {
+    const arr: number[] = this.cutCardNumber(deck);
+    const metaArr: number[] = [1, 13, 12, 11, 10];
+
+    const isAllTrue: boolean[] = [];
+
+    for (let i = 0; i < metaArr.length; i++) {
+      if (arr.includes(metaArr[i])) {
+        isAllTrue.push(true);
+      } else {
+        isAllTrue.push(false);
+      }
+    }
+
+    return isAllTrue.every((el) => el === true);
   }
 
   static isFlush(deck: Array<string>): boolean {
