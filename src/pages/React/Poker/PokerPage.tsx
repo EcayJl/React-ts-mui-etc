@@ -13,13 +13,16 @@ import { Context } from "./context";
 import CardEngine from "./CardEngine";
 import TCardStackSize from "./CardEngine";
 import PokerEngine from "./GameEngine";
+import { straightP } from "./mock";
 
 type TGameStatus = "downtime" | "flop" | "turn" | "river";
 
 const PokerPage: React.FC = () => {
   const [cardStack, setCardStack] = useState(CardEngine.getBundleRenderArray());
   // console.log(PokerEngine.isFlush(cardStack.mainArr), 'flush');
-  console.log(PokerEngine.isFlush(cardStack.mainArr), 'flush');
+  console.log(straightP, 'here my question');
+  
+  console.log(PokerEngine.isStraight(straightP), 'straight here ');
 
 
   const [bet, setBet] = useState<number>(0);
