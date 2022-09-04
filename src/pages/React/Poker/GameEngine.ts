@@ -89,34 +89,28 @@ export default class PokerEngine {
 
   static isStraight(deck: string[]) {
     const cutDeck = this.cutCardNumber(deck);
-    const withoutAce = this.getIncludesObj(cutDeck);
-
-    if (withoutAce[1] > 1) {
-      return false;
-    } else {
-      const sortDeck: number[] = cutDeck.sort(function (a, b) {
-        return a - b;
-      });
-      // проверка на идентичность массивов
-      if (
-        JSON.stringify(sortDeck) ===
-        JSON.stringify(this.staticCases.metaRoyalCase)
-      ) {
-        return true;
-      }
-      // проверяю разницу в шагах между номиналом карт
-      const stepBooleanCheck: Array<boolean> = [];
-      sortDeck.forEach((item, index, array) => {
-        if (!array[index + 1]) {
-          return;
-        }
-        array[index + 1] - array[index] === 1
-          ? stepBooleanCheck.push(true)
-          : stepBooleanCheck.push(false);
-      });
-
-      return stepBooleanCheck.every((el) => el === true) ? true : false;
+    const sortDeck: number[] = cutDeck.sort(function (a, b) {
+      return a - b;
+    });
+    // проверка на идентичность массивов
+    if (
+      JSON.stringify(sortDeck) ===
+      JSON.stringify(this.staticCases.metaRoyalCase)
+    ) {
+      return true;
     }
+    // проверяю разницу в шагах между номиналом карт
+    const stepBooleanCheck: Array<boolean> = [];
+    sortDeck.forEach((item, index, array) => {
+      if (!array[index + 1]) {
+        return;
+      }
+      array[index + 1] - array[index] === 1
+        ? stepBooleanCheck.push(true)
+        : stepBooleanCheck.push(false);
+    });
+
+    return stepBooleanCheck.every((el) => el === true) ? true : false;
   }
 
   static isFlush(deck: Array<string>) {
