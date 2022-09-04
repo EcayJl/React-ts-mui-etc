@@ -27,6 +27,7 @@ export default class PokerEngine {
       return +i.substring(1);
     });
   }
+
   static getTrainCombinations(deck: string[]) {
     const arr: number[] = this.cutCardNumber(deck);
     const result = this.getIncludesObj(arr);
@@ -71,11 +72,7 @@ export default class PokerEngine {
     const isAllTrue: boolean[] = [];
 
     for (let i = 0; i < metaArr.length; i++) {
-      if (arr.includes(metaArr[i])) {
-        isAllTrue.push(true);
-      } else {
-        isAllTrue.push(false);
-      }
+      arr.includes(metaArr[i]) ? isAllTrue.push(true) : isAllTrue.push(false);
     }
 
     return isAllTrue.every((el) => el === true);
@@ -83,19 +80,11 @@ export default class PokerEngine {
 
   static isCare(arr: string[]): boolean {
     const result = this.getIncludesObj(this.cutCardNumber(arr));
-    if (result[1] === 4) {
-      return true;
-    } else {
-      return false;
-    }
+    return result[1] === 4 ? true : false;
   }
 
   static isRoyalFlush(deck: string[]): boolean {
-    if (this.isFlush(deck)) {
-      return this.isRoyalSet(deck);
-    } else {
-      return false;
-    }
+    return this.isFlush(deck) ? this.isRoyalSet(deck) : false;
   }
 
   static isStraight(deck: string[]) {
@@ -109,26 +98,16 @@ export default class PokerEngine {
       const sortDeck: number[] = cutDeck.sort(function (a, b) {
         return a - b;
       });
-
-      console.log(sortDeck, "9879");
     }
   }
 
   static isFlush(deck: Array<string>) {
     let isFlush: boolean[] = [];
 
-    for (let i = 0; i < 5; i++) {
-      isFlush.push(
-        deck.every((value) => {
-          value.includes(SuitsArr[i]);
-        })
-      );
+    for (let i = 0; i < 4; i++) {
+      isFlush.push(deck.every((value) => value.includes(SuitsArr[i])));
     }
 
-    if (isFlush.some((el) => el === true)) {
-      return true;
-    } else {
-      return false;
-    }
+    return isFlush.some((el) => el === true) ? true : false;
   }
 }
